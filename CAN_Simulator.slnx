@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="CAN_Simulator/CAN_Simulator.vcxproj" Id="da1e9c44-b268-4eee-b185-4c3e14298d1f" />
+</Solution>
