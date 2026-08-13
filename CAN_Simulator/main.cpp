@@ -17,11 +17,21 @@ int main()
 
 	
 	ECU ecu1(3);
+	ECU ecu2(3);
 	uint8_t data[3];
 
 	data[0] = 0x12;
 	data[1] = 0x34;
 	data[2] = 0x56;
-	CANMessage message = ecu1.createMessage(0x100, 3, data);
-	print_message(message);
+	CANMessage message1 = ecu1.createMessage(0x100, 3, data);
+	CANMessage message2 = ecu2.createMessage(0x140, 3, data);
+	bool result = message1.operator==(message2);
+	if (result == true)
+	{
+		cout << "test passed" << endl;
+	}
+	else
+	{
+		cout << "test failed" << endl;
+	}
 }
