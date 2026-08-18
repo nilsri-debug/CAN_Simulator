@@ -26,11 +26,18 @@ int main()
     data[2] = 0x56;
 
     // ECU1 erstellt Nachricht
-    CANMessage message = ecu1.createMessage(0x100, 3, data);
+    CANMessage message1 = ecu1.createMessage(0x100, 3, data);
+    CANMessage message2 = ecu2.createMessage(0x200, 3, data);
 
     // ECU1 sendet Nachricht über den Bus
-    bus.transmit(message, ecu1.get_id());
+    bus.transmit(message1, ecu1.get_id(), message2, ecu2.get_id());
 
+    
+    CANMessage output = bus.arbitrate(message1, message2);
+    cout << "The winning Identifier is:"<< hex << output.identifier << endl;
+    
+    
+    /*
     // Test 1: ECU1 darf die Nachricht nicht empfangen
     if (!ecu1.get_hasreceivedMesage())
     {
@@ -86,4 +93,5 @@ int main()
     }
 
     return 0;
+    */
 }
