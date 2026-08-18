@@ -1,5 +1,5 @@
 #include "CANMessage.h"
-bool CANMessage::operator==(const CANMessage& message)
+bool CANMessage::operator==(const CANMessage& message) const
 {
 	if (identifier != message.identifier || dlc != message.dlc)
 	{

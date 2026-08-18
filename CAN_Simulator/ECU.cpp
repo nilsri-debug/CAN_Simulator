@@ -26,9 +26,14 @@ CANMessage ECU::createMessage(uint32_t id, uint8_t dlc, uint8_t data[])
 }
 void ECU::receiveMessage(const CANMessage& message)
 {
+	hasReceivedMessage = true;
 	receivedMessage = message;
 }
 CANMessage ECU::get_received_message()
 {
 	return receivedMessage;
+}
+bool ECU::get_hasreceivedMesage()
+{
+	return hasReceivedMessage;
 }

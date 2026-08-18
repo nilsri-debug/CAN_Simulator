@@ -4,4 +4,5 @@
     <Platform Name="x86" />
   </Configurations>
   <Project Path="CAN_Simulator/CAN_Simulator.vcxproj" Id="da1e9c44-b268-4eee-b185-4c3e14298d1f" />
+  <Project Path="CAN_Simulator_Test/CAN_Simulator_Test.vcxproj" Id="f847ce7d-524b-4ba2-8655-2af7795b9dbc" />
 </Solution>

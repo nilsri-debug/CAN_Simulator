@@ -8,8 +8,10 @@ public:
 	CANMessage createMessage(uint32_t id, uint8_t dlc, uint8_t data[]);
 	void receiveMessage(const CANMessage& message);
 	CANMessage get_received_message();
+	bool get_hasreceivedMesage();
 private:
 	int Id = 0;
 	CANMessage receivedMessage;
+	bool hasReceivedMessage = false;
 };
 

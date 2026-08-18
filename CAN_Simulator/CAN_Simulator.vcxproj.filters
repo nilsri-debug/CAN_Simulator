@@ -24,6 +24,9 @@
     <ClCompile Include="ECU.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="CANBus.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CANMessage.h">
@@ -32,5 +35,14 @@
     <ClInclude Include="ECU.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="CANBus.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
