@@ -2,6 +2,7 @@
 #include <vector>
 #include "ECU.h"
 
+struct CANTransmissi
 
 class CANBus
 {

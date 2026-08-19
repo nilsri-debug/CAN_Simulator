@@ -7,11 +7,21 @@ void CANBus::registerECU( ECU& ecu)
 void CANBus::transmit(const CANMessage& message1, int transmitterID1, const CANMessage& message2, int transmitterID2)
 {
 	CANMessage output = arbitrate(message1, message2);
+	int winner_id;
+	if (output == message1)
+	{
+		winner_id = transmitterID1;
+
+	}
+	else
+	{
+		winner_id = transmitterID2;
+	}
 	for (int i = 0; i < ecus.size(); i++)
 	{
 		
 		int ecus_id =ecus[i]->get_id();
-		if (ecus_id != output.identifier)
+		if (ecus_id != winner_id)
 		{
 			ecus[i]->receiveMessage(output);
 		}
