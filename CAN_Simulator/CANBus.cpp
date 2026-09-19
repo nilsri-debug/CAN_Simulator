@@ -2,47 +2,38 @@
 #include "ECU.h"
 void CANBus::registerECU( ECU& ecu)
 {
-	ecus.push_back(&ecu);
+	ecus.push_back(&ecu);																							// register ECU with the CAN bus
 }
-void CANBus::transmit(const CANMessage& message1, int transmitterID1, const CANMessage& message2, int transmitterID2)
+CANTransmission CANBus::arbitrate(const CANTransmission& transmission1, const CANTransmission& transmission2)		// Perform CAN arbitrition
 {
-	CANMessage output = arbitrate(message1, message2);
-	int winner_id;
-	if (output == message1)
+	if (transmission1.message.identifier < transmission2.message.identifier)										// transmission with lower identificator wins
 	{
-		winner_id = transmitterID1;
-
+		return transmission1;
+	}
+	else if (transmission1.message.identifier > transmission2.message.identifier)
+	{
+		return transmission2;
 	}
 	else
 	{
-		winner_id = transmitterID2;
-	}
-	for (int i = 0; i < ecus.size(); i++)
-	{
-		
-		int ecus_id =ecus[i]->get_id();
-		if (ecus_id != winner_id)
-		{
-			ecus[i]->receiveMessage(output);
-		}
-		else
-		{
-			continue;
-		}
+		return transmission1;;
 	}
 }
-CANMessage CANBus::arbitrate(const CANMessage& message1, const CANMessage& message2)
+void CANBus::transmit(const std::vector<CANTransmission>& transmissions)											// transmitt the the current winner
 {
-	if (message1.identifier < message2.identifier)
+	CANTransmission winner = transmissions[0];
+	for (int i = 1; i < transmissions.size(); i++)
 	{
-		return message1;
+		winner = arbitrate(winner, transmissions[i]); 
 	}
-	else if (message1.identifier > message2.identifier)
+
+	for (int i = 0; i < ecus.size(); i++)																			// Compare all remaining transmissions with the current winner
 	{
-		return message2;
-	}
-	else if (message1.identifier == message2.identifier)
-	{
-		return message1;
+		int ecuid = ecus[i]->get_id();
+		if (ecuid != winner.transmitterID)
+		{
+			ecus[i]->receiveMessage(winner.message);																// the winner doesen#t receive his one message
+		}
 	}
 }
+

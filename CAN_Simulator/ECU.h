@@ -9,7 +9,7 @@ public:
 	void receiveMessage(const CANMessage& message);
 	CANMessage get_received_message();
 	bool get_hasreceivedMesage();
-private:
+protected:
 	int Id = 0;
 	CANMessage receivedMessage;
 	bool hasReceivedMessage = false;

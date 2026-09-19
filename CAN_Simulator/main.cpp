@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-    ECU ecu1(1);
+    /*ECU ecu1(1);
     ECU ecu2(2);
     ECU ecu3(3);
 

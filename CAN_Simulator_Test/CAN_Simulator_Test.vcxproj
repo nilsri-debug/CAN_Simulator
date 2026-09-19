@@ -99,6 +99,7 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\CAN_Simulator\BrakeECU.cpp" />
     <ClCompile Include="..\CAN_Simulator\CANBus.cpp" />
     <ClCompile Include="..\CAN_Simulator\CANBusTest.cpp" />
     <ClCompile Include="..\CAN_Simulator\CANMessage.cpp" />
