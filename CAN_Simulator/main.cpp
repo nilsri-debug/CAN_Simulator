@@ -4,7 +4,7 @@ using namespace std;
 #include "CANMessage.h"
 #include "ECU.h"
 #include "CANBus.h"
-
+#include "BrakeECU.h"
 int main()
 {
     /*ECU ecu1(1);
@@ -94,4 +94,12 @@ int main()
 
     return 0;
     */
+    CANBus bus;
+    BrakeECU brake(1);
+    bus.registerECU(brake);
+
+    CANTransmission transmission = brake.activateBrake();
+    std::vector<CANTransmission> transmissions;
+    transmissions.push_back(transmission);
+    bus.transmit(transmissions);
 }

@@ -143,6 +143,7 @@
     <ClCompile Include="CANBus.cpp" />
     <ClCompile Include="CANMessage.cpp" />
     <ClCompile Include="ECU.cpp" />
+    <ClCompile Include="LightECU.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +151,7 @@
     <ClInclude Include="CANBus.h" />
     <ClInclude Include="CANMessage.h" />
     <ClInclude Include="ECU.h" />
+    <ClInclude Include="LightECU.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
